@@ -1,7 +1,7 @@
 import React from "react"
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes } from "../../redux/actions";
+import { filterByDesAsc, filterbyDiets, getAllRecipes } from "../../redux/actions";
 import { Card } from "../CardRecipes/Card";
 import { Paginado } from "../Paginado/Paginado";
 
@@ -13,6 +13,7 @@ export function Recipes() {
     const recipes = useSelector( (state) => state.recipes);
 
     const [currentPage,setCurrentPage] = useState(1);
+    const [order,setOrder]= useState('')
     const [recipesForPage,setRecipesForPage] = useState(9);
     const lastRecipe = currentPage * recipesForPage;
     const firstRecipe= lastRecipe - recipesForPage;
@@ -27,26 +28,37 @@ export function Recipes() {
         dispatch(getAllRecipes());
     },[dispatch])
 
-    
+    function handleFilterByDiet(e){
+        dispatch(filterbyDiets(e.target.value))
+    }
+
+    function handleFilterAsc(e){
+        dispatch(filterByDesAsc(e.target.value));
+        setCurrentPage(1);
+        setOrder();
+
+    }
     return (
         <div>
             <h1>Recetas</h1>
             <div>
-                <select>
+                <select onChange={e => handleFilterAsc(e)}>
+                    <option disabled={true} selected>Selecciona...</option>
                     <option value="asc">Asecendente</option>
                     <option value="des">Descendente</option>
                 </select>
 
-                <select>
-                    <option value="glfree">Gluten Free</option>
-                    <option value="keto">Ketogenic</option>
-                    <option value="vege">Vegetarian</option>
-                    <option value="lacto">Ovo-Vegetarian</option>
+                <select onChange={e => handleFilterByDiet(e)}>
+                    <option value="all">Todos</option>
+                    <option value="gluten free">Gluten Free</option>
+                    <option value="ketogenic">Ketogenic</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="ovo vegetarian">Ovo-Vegetarian</option>
                     <option value="vegan">Vegan</option>
-                    <option value="paleo">Paleo</option>
+                    <option value="paleolithic">Paleo</option>
                     <option value="primal">Primal</option>
-                    <option value="low">Low FODMAP</option>
-                    <option value="whole">Whole30</option>
+                    <option value="low FODMAP">Low FODMAP</option>
+                    <option value="whole 30">Whole30</option>
                 </select>
                 <select>
                     <option value="100-90">100-90</option>
@@ -77,6 +89,7 @@ export function Recipes() {
                                 <Card 
                                 name={recipe.name}
                                 image={recipe.img}
+                                diet = {recipe.diet}
                                 />
                             )
                         })

@@ -8,7 +8,18 @@ export function getAllRecipes(){
         payload: recipes.data
     });
 };
+}
 
+export function filterbyDiets(payload){
+    return {
+        type: 'FILTER_BY_DIETS',
+        payload
+    }
+}
 
-
+export function filterByDesAsc(payload){
+    return {
+        type: 'FILTER_BY_DESC_ASC',
+        payload
+    }
 }
