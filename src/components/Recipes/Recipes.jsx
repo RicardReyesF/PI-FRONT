@@ -1,7 +1,7 @@
 import React from "react"
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByDesAsc, filterbyDiets, getAllRecipes } from "../../redux/actions";
+import { filterByDesAsc, filterbyDiets, filterByScore, getAllRecipes, search } from "../../redux/actions";
 import { Card } from "../CardRecipes/Card";
 import { Paginado } from "../Paginado/Paginado";
 
@@ -35,9 +35,18 @@ export function Recipes() {
     function handleFilterAsc(e){
         dispatch(filterByDesAsc(e.target.value));
         setCurrentPage(1);
-        setOrder();
+        setOrder(`${e.target.value}`);
 
     }
+
+    function handleFilterByScore(e){
+        dispatch(filterByScore(e.target.value))
+    }
+
+    function handleSearchName(e){
+        dispatch(search(e.target.value))
+    }
+
     return (
         <div>
             <h1>Recetas</h1>
@@ -60,18 +69,21 @@ export function Recipes() {
                     <option value="low FODMAP">Low FODMAP</option>
                     <option value="whole 30">Whole30</option>
                 </select>
-                <select>
-                    <option value="100-90">100-90</option>
-                    <option value="90-80">90-80</option>
-                    <option value="80-70">80-70</option>
-                    <option value="70-60">70-60</option>
-                    <option value="60-50">60-50</option>
-                    <option value="50-40">50-40</option>
-                    <option value="40-30">40-30</option>
-                    <option value="30-20">30-20</option>
-                    <option value="20-10">20-10</option>
-                    <option value="10-0">10-0</option>
+                <select onChange={e => handleFilterByScore(e)}>
+                <option disabled={true} selected>Selecciona...</option>
+                    <option value="100-80">100-80</option>
+                    <option value="80-60">80-60</option>
+                    <option value="60-40">60-40</option>
+                    <option value="40-20">40-20</option>
+                    <option value="20-0">20-0</option>
                 </select>
+
+
+                <form>
+                    <input type="text" onChange={e => handleSearchName(e)} placeholder="Buscar" />
+                    
+                </form>
+
                 
                 {
                     <Paginado 

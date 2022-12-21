@@ -23,3 +23,20 @@ export function filterByDesAsc(payload){
         payload
     }
 }
+
+export function filterByScore(payload){
+    return{
+        type: 'FILTER_BY_SCORE',
+        payload
+    }
+}
+
+export function search(payload){
+    return async function(dispatch){
+        const recipesSearch = await axios.get(`http://localhost:3001/recipes?query=${payload}`)
+        return dispatch({
+            type:'SEARCH_NAME',
+            payload: recipesSearch.data
+        })
+    }
+}
