@@ -40,3 +40,14 @@ export function search(payload){
         })
     }
 }
+
+export function getRecipesDetail(payload){
+    return async function(dispatch){
+        console.log(payload);
+        const recipesDetail = await axios.get(`http://localhost:3001/recipes/${payload}`)
+        return dispatch({
+            type:'GET_RECIPES_DETAIL',
+            payload: recipesDetail.data
+        })
+    }
+}

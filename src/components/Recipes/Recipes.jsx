@@ -102,6 +102,7 @@ export function Recipes() {
                                 name={recipe.name}
                                 image={recipe.img}
                                 diet = {recipe.diet}
+                                id={recipe.id}
                                 />
                             )
                         })
