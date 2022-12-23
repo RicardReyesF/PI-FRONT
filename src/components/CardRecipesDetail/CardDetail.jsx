@@ -1,7 +1,5 @@
 export const CardDetail = ({img,name,summary,score,steps,typeDish,diet}) => {
-    
-    const step = steps.map(s => s[0].step)
-    console.log(step);
+
     return (
         <div>
             <h1>{name}</h1>
@@ -20,16 +18,16 @@ export const CardDetail = ({img,name,summary,score,steps,typeDish,diet}) => {
             <h4>Paso a Paso</h4>
             <ol>
             {
-                steps.map(step => 
+                steps[0].map(step => 
                     (
                     <li>
                         <p>
                         {
-                        step[0].step
+                        step.step
                         }
                         </p>
                     </li>    
-                                        )
+                    )
                 )
                 
             }

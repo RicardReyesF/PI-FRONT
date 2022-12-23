@@ -1,6 +1,7 @@
 import React from "react"
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { filterByDesAsc, filterbyDiets, filterByScore, getAllRecipes, search } from "../../redux/actions";
 import { Card } from "../CardRecipes/Card";
 import { Paginado } from "../Paginado/Paginado";
@@ -83,6 +84,9 @@ export function Recipes() {
                     <input type="text" onChange={e => handleSearchName(e)} placeholder="Buscar" />
                     
                 </form>
+                <Link to='/new-recipes'>
+                    <button>Nueva Receta</button>
+                </Link>
 
                 
                 {

@@ -13,6 +13,7 @@ function App() {
       <Route path='/recipes' element={<Recipes />}></Route>
       <Route path='/new-recipes' element={<NewRecipes />}></Route>
       <Route path='/recipes/:id' element={<DetailRecipes />}></Route>
+      '
     </Routes>
     </div>
   );

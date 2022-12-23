@@ -2,7 +2,8 @@
 const initialState ={
     recipes: [],
     recipesAll:[],
-    recipesDetail:[]
+    recipesDetail:[],
+    diets:[]
 }
 
 export function rootReducer (state = initialState, action)  {
@@ -94,6 +95,15 @@ export function rootReducer (state = initialState, action)  {
                 ...state,
                 recipesDetail: action.payload
 
+            }
+        case 'GET_DIETS':
+            return{
+                ...state,
+                diets: action.payload
+            }
+        case 'POST_RECIPE':
+            return {
+                ...state
             }
         default: return state
     }
