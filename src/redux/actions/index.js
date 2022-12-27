@@ -64,9 +64,7 @@ export function getDiets(){
 export function postRecipe(payload){
     return async function(dispatch){
         const post = await axios.post('http://localhost:3001/recipes',payload)
-        return dispatch({
-            type: 'POST_RECIPE',
-            payload
-        })
+        console.log(post);
+        return post
     }
 }

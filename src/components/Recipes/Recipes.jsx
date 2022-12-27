@@ -50,7 +50,9 @@ export function Recipes() {
 
     return (
         <div>
-            <h1>Recetas</h1>
+            <Link to="/">
+                <h1>Recetas</h1>
+            </Link>
             <div>
                 <select onChange={e => handleFilterAsc(e)}>
                     <option disabled={true} selected>Selecciona...</option>
