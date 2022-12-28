@@ -107,7 +107,7 @@ export function Recipes() {
                                 <Card 
                                 name={recipe.name}
                                 image={recipe.img}
-                                diet = {recipe.diet}
+                                diet = {recipe.diets}
                                 id={recipe.id}
                                 />
                             )

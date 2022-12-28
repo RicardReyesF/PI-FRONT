@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {Link, useNavigate} from "react-router-dom"
 import { getDiets } from "../../redux/actions";
 import { postRecipe } from "../../redux/actions";
+import { Validation } from "../../Validation";
 export const NewRecipes = () => {
 
     const diets = useSelector(state => state.diets);
@@ -11,7 +12,10 @@ export const NewRecipes = () => {
     useEffect(() => {
         dispatch(getDiets())
     },[dispatch])
-
+    const [validation, setValidation] = useState({
+        data:"",
+        score:"",
+    })
     const [recipes, setRecipes] = useState({
         name:"",
         resumen:"",
@@ -22,6 +26,13 @@ export const NewRecipes = () => {
     })
 
     function handleOnchange(e){
+        setValidation(
+            Validation({
+                ...recipes,
+                [e.target.name]: e.target.value
+            })
+        );
+
         setRecipes({
             ...recipes,
             [e.target.name]: e.target.value
@@ -31,15 +42,19 @@ export const NewRecipes = () => {
 
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(postRecipe(recipes))
-        setRecipes({
-            name:"",
-            resumen:"",
-            score:"",
-            stepByStep:"",
-            dietId:[]
-        })
-        navigate("/recipes")
+        if (recipes.name || recipes.resumen) {
+            dispatch(postRecipe(recipes))
+            setRecipes({
+                name:"",
+                resumen:"",
+                score:"",
+                stepByStep:"",
+                dietId:[]
+            })
+            navigate("/recipes")
+            
+        }
+        return validation.data
     }
 
     function handelCheck(e){
@@ -48,7 +63,6 @@ export const NewRecipes = () => {
                 ...recipes,
                 dietId: [...recipes.dietId,e.target.value]
             })
-            console.log(recipes)
         }
     }
 
@@ -68,6 +82,7 @@ export const NewRecipes = () => {
                     value={recipes.name}
                     onChange={handleOnchange}
                 />
+                <p>{validation.data && validation.data}</p>
                 <br />
                 <label htmlFor="score">Puntuacion</label>
                 <br />
@@ -81,6 +96,7 @@ export const NewRecipes = () => {
                     max="100"
                     onChange={handleOnchange}
                 />
+                <p>{validation.score && validation.score}</p>
                 <br />
                 <label>Tipos de Dieta</label>
                 <br />
@@ -113,6 +129,7 @@ export const NewRecipes = () => {
                     rows="10"> 
                     
                 </textarea>
+                
                 <br />
                 <label htmlFor="summary">Resumen</label>
                 <br />
@@ -124,6 +141,7 @@ export const NewRecipes = () => {
                     rows="10">
                     
                 </textarea>
+                <p>{validation.data && validation.data}</p>
                 <br />
                 <div>
                     <button type="submit">Crear</button>

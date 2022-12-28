@@ -20,6 +20,8 @@ export const DetailRecipes = () => {
         <div>
             {
             recipesDetail?.map( recipe => {
+                console.log(recipe.createdAt
+                    )
                 return (
                     <CardDetail
                         img      = {recipe.img}
@@ -28,7 +30,8 @@ export const DetailRecipes = () => {
                         score    = {recipe.score}
                         steps    = {recipe.stepByStep}
                         typeDish ={recipe.typeDish}
-                        diet     ={recipe.diet}
+                        diet     ={recipe.diets}
+                        creatDb  ={recipe.createdAt}
 
                     />
                     ) 
