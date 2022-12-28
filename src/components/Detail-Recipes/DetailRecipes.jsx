@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import  {useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
 import { getRecipesDetail } from "../../redux/actions";
@@ -15,15 +15,17 @@ export const DetailRecipes = () => {
         dispatch(getRecipesDetail(id));
     },[dispatch])
 
-    console.log(recipesDetail)
+    
     return (
+        recipesDetail.length > 0?
         <div>
             {
             recipesDetail?.map( recipe => {
-                console.log(recipe.createdAt
-                    )
+                
                 return (
+
                     <CardDetail
+                        key      ={ recipe.id}
                         img      = {recipe.img}
                         name     = {recipe.name}
                         summary  = {recipe.resumen}
@@ -38,5 +40,7 @@ export const DetailRecipes = () => {
             })
             }
         </div>
+        :
+        <div className="loader"></div>
     )
 }

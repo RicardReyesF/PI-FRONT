@@ -13,7 +13,7 @@ export function Paginado({recipes,recipesForPage,paginado}){
             <ul>
                 {
                     pageNumber?.map(nume =>(
-                        <li>
+                        <li key={nume}>
                             <a onClick={() => paginado(nume)}>{nume}</a>
                         </li>
                     ))

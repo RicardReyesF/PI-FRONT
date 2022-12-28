@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+
 export const CardDetail = ({img,name,summary,score,steps,typeDish,diet,creatDb}) => {
-    console.log(diet);
+    
     return (
         <div>
+            <Link to="/recipes">
+                <button>Regresar</button>
+            </Link>
             <h1>{name}</h1>
             <img src={img? img : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOTHndRaG7KlBkrF7Pjzsd0K7Hj3zoiIkuXQ&usqp=CAU"} alt="" />
             <h4>Nivel saludable {score}</h4>
@@ -9,12 +14,12 @@ export const CardDetail = ({img,name,summary,score,steps,typeDish,diet,creatDb})
                 <ul>
                     {
                         creatDb ? diet.map(d => (
-                            <li>{d.name}</li>
+                            <li key={d.name}>{d.name}</li>
                             )
                         ) 
                         :
-                        diet.map(d =>(
-                            <li>{d}</li>
+                        diet?.map(d =>(
+                            <li key={d}>{d}</li>
                         ))
                     }
                 </ul>
@@ -22,10 +27,10 @@ export const CardDetail = ({img,name,summary,score,steps,typeDish,diet,creatDb})
             <p>{summary}</p>
             <h4>Paso a Paso</h4>
             <ol>
-            {/* {
-                steps[0]? steps[0].map(step =>
+            {
+                !creatDb? steps[0]?.map(step =>
                     (
-                    <li>
+                    <li key={step.step}>
                         <p>
                         {
                         step.step
@@ -33,7 +38,7 @@ export const CardDetail = ({img,name,summary,score,steps,typeDish,diet,creatDb})
                         </p>
                     </li>
                     )
-                ) : "No hay ningun paso para esta receta" */
+                ) : <li ><p>{steps}</p></li> 
 
             }
             </ol>
@@ -41,7 +46,7 @@ export const CardDetail = ({img,name,summary,score,steps,typeDish,diet,creatDb})
                 <ul>
                     {
                         typeDish? typeDish.map(type => (
-                            <li>{type}</li>
+                            <li key={type}>{type}</li>
                         ))
                         : "No hay tipo de plato"
                     }

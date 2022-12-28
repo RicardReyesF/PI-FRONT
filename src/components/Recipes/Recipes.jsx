@@ -47,20 +47,24 @@ export function Recipes() {
     function handleSearchName(e){
         dispatch(search(e.target.value))
     }
-
+    
     return (
+        
+        recipes.length > 0 ?     
         <div>
+            
             <Link to="/">
                 <h1>Recetas</h1>
             </Link>
             <div>
                 <select onChange={e => handleFilterAsc(e)}>
-                    <option disabled={true} selected>Selecciona...</option>
+                    <option disabled={true} selected  value="">Asc/Desc...</option>
                     <option value="asc">Asecendente</option>
                     <option value="des">Descendente</option>
                 </select>
 
                 <select onChange={e => handleFilterByDiet(e)}>
+                <option disabled={true} selected value="">Tipo de dieta...</option>
                     <option value="all">Todos</option>
                     <option value="gluten free">Gluten Free</option>
                     <option value="ketogenic">Ketogenic</option>
@@ -72,8 +76,8 @@ export function Recipes() {
                     <option value="low FODMAP">Low FODMAP</option>
                     <option value="whole 30">Whole30</option>
                 </select>
-                <select onChange={e => handleFilterByScore(e)}>
-                <option disabled={true} selected>Selecciona...</option>
+                <select placeholder="Calificacion" onChange={e => handleFilterByScore(e)}>
+                <option disabled={true} selected value="">Calificacion...</option>
                     <option value="100-80">100-80</option>
                     <option value="80-60">80-60</option>
                     <option value="60-40">60-40</option>
@@ -92,7 +96,8 @@ export function Recipes() {
 
                 
                 {
-                    <Paginado 
+                    <Paginado
+                    
                     recipes={recipes.length}
                     recipesForPage={recipesForPage}
                     paginado={paginado}
@@ -105,10 +110,12 @@ export function Recipes() {
                         currentRecipe?.map( recipe =>{
                             return(
                                 <Card 
+                                key={recipe.id}
                                 name={recipe.name}
                                 image={recipe.img}
                                 diet = {recipe.diets}
                                 id={recipe.id}
+                                createDb={recipe.createdAt}
                                 />
                             )
                         })
@@ -116,6 +123,10 @@ export function Recipes() {
                 
             </div>
         </div>
+        :
+        <div className="loader"></div>
+                
 
     )
+    
 }
