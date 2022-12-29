@@ -6,11 +6,12 @@ import style from '../Home/home.module.css'
 
 export const Home = () => {
         return (
-            <div>
-                <h1>Bienvenido</h1>
-                <div>
+            <div className={style.form}>
+                <h1 className={style.words}>Bienvenido</h1>
+                <br />
+                <div >
                     <Link to="/recipes">
-                        <button>Ingresa</button>
+                        <button className={style.button}>Ingresa</button>
                     </Link>
                 </div>
             </div>

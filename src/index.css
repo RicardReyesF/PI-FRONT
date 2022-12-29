@@ -5,9 +5,10 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://c0.wallpaperflare.com/preview/341/392/39/menu-notebook-background-spices.jpg");
+  /* background-image: url("https://c0.wallpaperflare.com/preview/341/392/39/menu-notebook-background-spices.jpg");
   background-size: auto;
-  background-color: blanchedalmond;
+   */
+  background-color: rgb(207, 131, 52,0.3);
   
   
 }

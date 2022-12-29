@@ -1,0 +1,28 @@
+.form{
+    position:relative;	 
+    width:600px; 
+    height:300px; 
+    margin:0px auto;
+    margin-top: 200px; 
+    text-align:center;
+    background-color: rgb(125, 135, 45,0.3);
+    border-radius: 10px;
+    border: solid 4px #CF8334;
+}
+
+.button{
+    width: 150px;
+    height: 70px;
+    border-radius: 20px;
+    background-color: #CF8334;
+    color: #7D872D;
+    font-size: 22px;
+    border: #874C41 solid 2px;
+    -webkit-text-stroke: 1px #874C41;
+}
+
+.words{
+    -webkit-text-stroke: 1px #874C41;
+    color: #7D872D;
+    
+}
