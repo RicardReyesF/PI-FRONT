@@ -1,0 +1,51 @@
+.recipes{
+    position:relative;
+    margin:0px auto; 
+    text-align:center;
+}
+
+.title{
+    -webkit-text-stroke: 1px #874C41;
+    color: #7D872D;
+    text-decoration: none;
+    outline: none;
+    text-align: center;
+    
+}
+
+.divFilters {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    
+    border-bottom: #874C41 solid 1px;
+    border-top: #874C41 solid 1px ;
+    margin: 0px auto;
+    width: 1000px ;
+    align-items: center;
+    height: 70px;
+}
+
+.select {
+    padding: 6px 13px;
+    border: #874C41 solid 2px;
+    background-color: #DFBF99;
+    color: #7D872D;
+    -webkit-text-stroke: 1px #874C41;
+    font-size: 13px;
+
+}
+
+.h6{
+    -webkit-text-stroke: 1px #874C41;
+    color: #7D872D;
+    font-size: 18px;
+}
+
+.divCard {
+    border-bottom: #874C41 solid 1px;
+    border-top: #874C41 solid 1px ;
+    margin-top: 30px;
+    
+}
+

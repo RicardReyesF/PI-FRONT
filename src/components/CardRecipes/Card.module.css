@@ -1,0 +1,9 @@
+.divCard {
+    width: 25%;
+    float: left;
+}
+.divItemCard{
+    position: relative;
+    
+    padding-bottom: 20px;
+}

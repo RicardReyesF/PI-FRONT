@@ -7,7 +7,10 @@ import style from '../Home/home.module.css'
 export const Home = () => {
         return (
             <div className={style.form}>
+                <br />
+                <br />
                 <h1 className={style.words}>Bienvenido</h1>
+                <br />
                 <br />
                 <div >
                     <Link to="/recipes">

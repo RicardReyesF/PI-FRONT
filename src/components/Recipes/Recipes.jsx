@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { filterByDesAsc, filterbyDiets, filterByScore, getAllRecipes, search } from "../../redux/actions";
 import { Card } from "../CardRecipes/Card";
 import { Paginado } from "../Paginado/Paginado";
+import style from "../Recipes/Recipes.module.css"
 
 
 export function Recipes() {
@@ -47,23 +48,31 @@ export function Recipes() {
     function handleSearchName(e){
         dispatch(search(e.target.value))
     }
+
+    const decoration = {
+        textDecoration: "none"
+    } 
     
     return (
         
         recipes.length > 0 ?     
-        <div>
-            
-            <Link to="/">
-                <h1>Recetas</h1>
-            </Link>
-            <div>
-                <select onChange={e => handleFilterAsc(e)}>
-                    <option disabled={true} selected  value="">Asc/Desc...</option>
-                    <option value="asc">Asecendente</option>
-                    <option value="des">Descendente</option>
-                </select>
+        <div className={style.recipes}>
 
-                <select onChange={e => handleFilterByDiet(e)}>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                    <h1 className={style.title}>Recetas</h1>
+                </Link>
+            
+                
+            <div className={style.divFilters}>
+                <h6 className={style.h6}>Filtro por</h6>
+                <div>
+                    <select onChange={e => handleFilterAsc(e)} className={style.select}>
+                        <option disabled={true} selected  value="">Asc/Desc...</option>
+                        <option value="asc">Asecendente</option>
+                        <option value="des">Descendente</option>
+                    </select>
+                </div>
+                <select onChange={e => handleFilterByDiet(e)} className={style.select}>
                 <option disabled={true} selected value="">Tipo de dieta...</option>
                     <option value="all">Todos</option>
                     <option value="gluten free">Gluten Free</option>
@@ -76,7 +85,7 @@ export function Recipes() {
                     <option value="low FODMAP">Low FODMAP</option>
                     <option value="whole 30">Whole30</option>
                 </select>
-                <select placeholder="Calificacion" onChange={e => handleFilterByScore(e)}>
+                <select placeholder="Calificacion" onChange={e => handleFilterByScore(e)} className={style.select}>
                 <option disabled={true} selected value="">Calificacion...</option>
                     <option value="100-80">100-80</option>
                     <option value="80-60">80-60</option>
@@ -84,17 +93,11 @@ export function Recipes() {
                     <option value="40-20">40-20</option>
                     <option value="20-0">20-0</option>
                 </select>
+                <input className={style.select} type="text" onChange={e => handleSearchName(e)} placeholder="Buscar aqui..."  />
+            </div>
+            
+            <div>
 
-
-                <form>
-                    <input type="text" onChange={e => handleSearchName(e)} placeholder="Buscar" />
-                    
-                </form>
-                <Link to='/new-recipes'>
-                    <button>Nueva Receta</button>
-                </Link>
-
-                
                 {
                     <Paginado
                     
@@ -104,9 +107,11 @@ export function Recipes() {
                     />
                 }
                 
-                
-                
-                    {
+                <div className={style.divCard}>
+                <Link to='/new-recipes'>
+                    <button>Nueva Receta</button>
+                </Link>
+                {
                         currentRecipe?.map( recipe =>{
                             return(
                                 <Card 
@@ -120,6 +125,7 @@ export function Recipes() {
                             )
                         })
                     }
+                </div>
                 
             </div>
         </div>
