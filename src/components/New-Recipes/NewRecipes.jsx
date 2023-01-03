@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom"
 import { getDiets } from "../../redux/actions";
 import { postRecipe } from "../../redux/actions";
 import { Validation } from "../../Validation";
+import style from "../New-Recipes/NewRecipes.module.css"
 export const NewRecipes = () => {
 
     const diets = useSelector(state => state.diets);
@@ -67,15 +68,18 @@ export const NewRecipes = () => {
     }
 
     return (
-        <div>
-            <h1>Nueva Receta</h1>
-            <Link to="/recipes">
-                <button>Volver</button>
-            </Link>
+            // <Link to="/recipes">
+            //     <button>Volver</button>
+            // </Link>
+        <div className={style.divContainer}>
+            <h2 className={style.title}>Nueva Receta</h2>
+            <br />
             <form onSubmit={(e) => handleSubmit(e)}>
-                <label htmlFor="name">Nombre</label>
+                <label className={style.titleH3} htmlFor="name">Nombre</label>
+                <br />
                 <br />
                 <input 
+                    className={style.input}
                     type="text"
                     name="name"
                     placeholder="Nombre de la receta"
@@ -84,9 +88,11 @@ export const NewRecipes = () => {
                 />
                 <p>{validation.data && validation.data}</p>
                 <br />
-                <label htmlFor="score">Puntuacion</label>
+                <label className={style.titleH3} htmlFor="score">Puntuacion</label>
+                <br />
                 <br />
                 <input 
+                    className={style.input}
                     type="number"
                     name="score"
                     value={recipes.score}
@@ -98,20 +104,23 @@ export const NewRecipes = () => {
                 />
                 <p>{validation.score && validation.score}</p>
                 <br />
-                <label>Tipos de Dieta</label>
+                <label className={style.titleH3}>Tipos de Dieta</label>
                 <br />
-                <div>
+                <br />
+                <div  >
                     {
                         diets.map(diet => {
                             return(
-                                <label>
-                                    <input 
+                                <label className={style.title}>
+                                    {diet.name}
+                                    <br />
+                                    <input
+                                        
                                         type="checkbox" 
                                         name="dietId" 
                                         value={diet.id}
                                         onChange={(e) => handelCheck(e)}
                                         />
-                                        {diet.name}
                                     <br />
                                 </label>
                             )
@@ -119,9 +128,12 @@ export const NewRecipes = () => {
                     }
                 </div>
                 <br />
-                <label htmlFor="summary">Paso a Paso</label>
+                <br />
+                <label className={style.titleH3} htmlFor="summary">Paso a Paso</label>
+                <br />
                 <br />
                 <textarea
+                className={style.input}
                     onChange={handleOnchange}
                     value={recipes.stepByStep}
                     name="stepByStep" 
@@ -131,9 +143,12 @@ export const NewRecipes = () => {
                 </textarea>
                 
                 <br />
-                <label htmlFor="summary">Resumen</label>
+                <br />
+                <label className={style.titleH3} htmlFor="summary">Resumen</label>
+                <br />
                 <br />
                 <textarea 
+                    className={style.input}
                     onChange={handleOnchange}
                     value={recipes.resumen}
                     name="resumen" 
@@ -144,7 +159,7 @@ export const NewRecipes = () => {
                 <p>{validation.data && validation.data}</p>
                 <br />
                 <div>
-                    <button type="submit">Crear</button>
+                    <button className={style.button} type="submit">Crear</button>
                 </div>
             </form>
         </div>

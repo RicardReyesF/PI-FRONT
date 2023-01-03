@@ -1,9 +1,62 @@
 .divCard {
-    width: 25%;
-    float: left;
-}
-.divItemCard{
+    /* width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: 430px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto; */
+     float: left;
     position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0 90px 90px 50px;
+    width: calc(100% * .3333 - 150px + .3333 * 30px);
     
-    padding-bottom: 20px;
+    
+
+
+}
+.divCard .divItemCard{
+
+    width: 330px;
+    height: 430px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    background-color: rgb(125, 135, 45,0.3);
+    transition: all 0.25s;
+    border: solid 4px #CF8334;
+
+
+    /*
+
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+     */
+}
+
+.divCard .imgCard {
+    width: 330px;
+    height: 220px;
+}
+
+.words{
+    -webkit-text-stroke: 1px #874C41;
+    color: #7D872D;
+    height: 30px;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.wordsH4{
+    color: #CF8334;
+    -webkit-text-stroke: 1px #7D872D
+}
+
+.wordsP{
+    color: #CF8334;
 }

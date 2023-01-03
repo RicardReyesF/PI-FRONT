@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { filterByDesAsc, filterbyDiets, filterByScore, getAllRecipes, search } from "../../redux/actions";
 import { Card } from "../CardRecipes/Card";
 import { Paginado } from "../Paginado/Paginado";
+import { Nav } from "../Nav/nav";
 import style from "../Recipes/Recipes.module.css"
 
 
@@ -49,20 +50,18 @@ export function Recipes() {
         dispatch(search(e.target.value))
     }
 
-    const decoration = {
-        textDecoration: "none"
-    } 
-    
+
+
     return (
+
         
-        recipes.length > 0 ?     
         <div className={style.recipes}>
 
-                <Link to="/" style={{ textDecoration: "none" }}>
+                {/* <Link to="/" style={{ textDecoration: "none" }}>
                     <h1 className={style.title}>Recetas</h1>
-                </Link>
+                </Link> */}
             
-                
+
             <div className={style.divFilters}>
                 <h6 className={style.h6}>Filtro por</h6>
                 <div>
@@ -95,26 +94,26 @@ export function Recipes() {
                 </select>
                 <input className={style.select} type="text" onChange={e => handleSearchName(e)} placeholder="Buscar aqui..."  />
             </div>
-            
+
             <div>
 
                 {
                     <Paginado
-                    
+
                     recipes={recipes.length}
                     recipesForPage={recipesForPage}
                     paginado={paginado}
                     />
                 }
-                
-                <div className={style.divCard}>
                 <Link to='/new-recipes'>
-                    <button>Nueva Receta</button>
+                    <button className={style.button}>Nueva Receta</button>
                 </Link>
+                <div className={style.divCard}>
                 {
+                    currentRecipe.length > 0 ?
                         currentRecipe?.map( recipe =>{
                             return(
-                                <Card 
+                                <Card
                                 key={recipe.id}
                                 name={recipe.name}
                                 image={recipe.img}
@@ -123,16 +122,17 @@ export function Recipes() {
                                 createDb={recipe.createdAt}
                                 />
                             )
-                        })
+                        }):
+                        <div className="loader"></div>
                     }
                 </div>
-                
+
             </div>
         </div>
-        :
-        <div className="loader"></div>
-                
+        
+        
+
 
     )
-    
+
 }

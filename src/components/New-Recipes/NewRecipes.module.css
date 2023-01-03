@@ -1,0 +1,52 @@
+.divContainer{
+    margin: 0px auto;
+    text-align: center;
+    width: 50%;
+    margin-left: 500px;
+    margin-right: 15px;
+    background-color: rgb(125, 135, 45,0.3);
+    padding-bottom: 25px;
+    border: solid 4px #CF8334;
+}
+
+.input {
+    padding: 6px 13px;
+    border: #874C41 solid 2px;
+    background-color: #DFBF99;
+    color: #7D872D;
+    -webkit-text-stroke: 1px #874C41;
+    font-size: 13px;
+}
+
+.button {
+    padding: 6px 13px;
+    border: #874C41 solid 2px;
+    background-color: #DFBF99;
+    color: #7D872D;
+    -webkit-text-stroke: 1px #874C41;
+    font-size: 13px;
+}
+
+.titleH3{
+    font-size: x-large;
+    -webkit-text-stroke: 1px #874C41;
+    color: #7D872D;
+}
+
+.title{
+    -webkit-text-stroke: 1px #874C41;
+    color: #7D872D;
+    
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #2196F3;
+} 
+.checkbox{
+    background-color: #DFBF99;
+}

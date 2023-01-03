@@ -1,0 +1,93 @@
+.divAll{
+    width: 100%;
+    float: left;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-right: 15px;
+    padding-left: 15px;   
+    padding-bottom: 15px; 
+    
+    
+}
+
+.divImg {
+    width: 33%;
+    max-width: 450px;
+    margin-right: 50px ;
+    display: flex;
+    border: solid 4px #CF8334;
+    float: left;
+    
+}
+
+.divTitle{
+    width: 66%;
+    
+}
+
+.titleH3{
+    -webkit-text-stroke: 1px #874C41;
+    color: #7D872D;
+}
+
+.h4{
+    -webkit-text-stroke: 1px #874C41;
+    color: #7D872D;
+    
+}
+
+.p {
+    color: #CF8334;
+}
+
+.plato{
+    margin: 5px 5px 0 5px ;
+}
+
+.ul{
+    padding-left: 1rem;
+    list-style-type: none;
+    color: #CF8334;
+}
+.ul .li{
+    padding-left: 2rem;
+    background-image: url(../../img/placa-de-tenedor-y-cuchillo.png);
+    background-position: 0 0;
+    background-size: 1.6rem 1.6rem;
+    background-repeat: no-repeat;
+    
+}
+
+.divSummary{
+    border-bottom: #874C41 1px solid;
+    border-top: #874C41 1px solid;
+    width: 92.5%;
+    display: inline-block;
+    margin-left: 90px;
+    margin-right: 15px;
+    
+}
+
+.divContainer{
+    width: 92.5%;
+    display: inline-block;
+    margin-left: 90px;
+    margin-right: 15px;
+    border-bottom: #874C41 1px solid;
+}
+
+.divButton{
+    width: 92.5%;
+    display: inline-block;
+    margin-left: 90px;
+    margin-right: 15px;
+    padding-bottom: 15px;
+}
+
+.button{
+    border: #874C41 solid 2px;
+    background-color: #DFBF99;
+    color: #7D872D;
+    -webkit-text-stroke: 1px #874C41;
+}

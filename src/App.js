@@ -4,10 +4,13 @@ import { Home } from './components/Home/Home.jsx';
 import{ Recipes } from './components/Recipes/Recipes.jsx';
 import { NewRecipes } from './components/New-Recipes/NewRecipes.jsx';
 import { DetailRecipes } from './components/Detail-Recipes/DetailRecipes.jsx';
+import { Nav } from './components/Nav/nav';
 function App() {
 
   return (
     <div>
+    
+    <Nav />
     <Routes>
       <Route path='/' element={<Home />}></Route>
       <Route path='/recipes' element={<Recipes />}></Route>
