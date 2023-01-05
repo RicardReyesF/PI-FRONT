@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getAllRecipes(){
     return async function (dispatch){
-        const recipes  = await axios.get(`http://localhost:3001/recipes`)
+        const recipes  = await axios.get(`https://recipes-by-rrf.herokuapp.com/recipes`)
     return dispatch({
         type: 'GET_ALL_RECIPES',
         payload: recipes.data
@@ -33,7 +33,7 @@ export function filterByScore(payload){
 
 export function search(payload){
     return async function(dispatch){
-        const recipesSearch = await axios.get(`http://localhost:3001/recipes?query=${payload}`)
+        const recipesSearch = await axios.get(`https://recipes-by-rrf.herokuapp.com/recipes?query=${payload}`)
         return dispatch({
             type:'SEARCH_NAME',
             payload: recipesSearch.data
@@ -43,7 +43,7 @@ export function search(payload){
 
 export function getRecipesDetail(payload){
     return async function(dispatch){
-        const recipesDetail = await axios.get(`http://localhost:3001/recipes/${payload}`)
+        const recipesDetail = await axios.get(`https://recipes-by-rrf.herokuapp.com/recipes/${payload}`)
         return dispatch({
             type:'GET_RECIPES_DETAIL',
             payload: recipesDetail.data
@@ -53,7 +53,7 @@ export function getRecipesDetail(payload){
 
 export function getDiets(){
     return async function(dispatch){
-        const diets = await axios.get('http://localhost:3001/diets')
+        const diets = await axios.get('https://recipes-by-rrf.herokuapp.com/diets')
         return dispatch({
             type: 'GET_DIETS',
             payload: diets.data
@@ -63,7 +63,7 @@ export function getDiets(){
 
 export function postRecipe(payload){
     return async function(dispatch){
-        const post = await axios.post('http://localhost:3001/recipes',payload)
+        const post = await axios.post('https://recipes-by-rrf.herokuapp.com/recipes/recipes',payload)
         console.log(post);
         return post
     }
