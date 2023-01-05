@@ -63,7 +63,7 @@ export function getDiets(){
 
 export function postRecipe(payload){
     return async function(dispatch){
-        const post = await axios.post('https://recipes-by-rrf.herokuapp.com/recipes/recipes',payload)
+        const post = await axios.post('https://recipes-by-rrf.herokuapp.com/recipes',payload)
         console.log(post);
         return post
     }
