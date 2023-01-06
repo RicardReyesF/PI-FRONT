@@ -140,9 +140,11 @@ export function Recipes() {
                                 createDb={recipe.createdAt}
                                 />
                             )
-                        }): <div className="loader">{setTimeout(() => {
-                                return <div className={style.divCard}> No existen recetas</div>
-                        }, 5000)}</div>
+                        }): <div className="loader">{
+                            setTimeout(() => {
+                                window.alert("No existen recetas")
+                            }, 7000)
+                        }</div>
                 }
                 </div>
 
