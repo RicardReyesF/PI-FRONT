@@ -140,7 +140,7 @@ export function Recipes() {
                                 createDb={recipe.createdAt}
                                 />
                             )
-                        }): <div className="loader"></div>
+                        }): <div className="loader">No existen recetas</div>
                 }
                 </div>
 
