@@ -140,7 +140,7 @@ export function Recipes() {
                                 createDb={recipe.createdAt}
                                 />
                             )
-                        }): <div className={style.divCard}> No existen recetas</div>
+                        }): <div> <h2 className={style.title}> No existen recetas</h2></div>
                 }
                 </div>
 
