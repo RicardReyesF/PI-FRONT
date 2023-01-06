@@ -140,7 +140,9 @@ export function Recipes() {
                                 createDb={recipe.createdAt}
                                 />
                             )
-                        }): <div className="loader">No existen recetas</div>
+                        }): <div className="loader">{setTimeout(() => {
+                                return console.log("Si se ejecuta")
+                        }, 5000)}</div>
                 }
                 </div>
 
