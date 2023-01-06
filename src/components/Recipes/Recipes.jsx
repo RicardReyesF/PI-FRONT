@@ -141,7 +141,7 @@ export function Recipes() {
                                 />
                             )
                         }): <div className="loader">{setTimeout(() => {
-                                return console.log("Si se ejecuta")
+                                return <div className={style.divCard}> No existen recetas</div>
                         }, 5000)}</div>
                 }
                 </div>
