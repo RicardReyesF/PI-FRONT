@@ -50,3 +50,15 @@
 .checkbox{
     background-color: #DFBF99;
 }
+
+.p{
+    color:  #874C41;
+    -webkit-text-stroke: 1.5px #CF8334 
+}
+.divButton{
+    width: 92.5%;
+    display: inline-block;
+    margin-left: 90px;
+    margin-right: 15px;
+    padding-bottom: 15px;
+}

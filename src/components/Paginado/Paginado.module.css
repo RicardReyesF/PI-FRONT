@@ -12,6 +12,21 @@
 	margin-right:10px;
 }
 
+.paginado ul button {
+	display:inline-block;
+	margin-right:10px;
+}
+
+.button {
+	display:block;
+	padding:10px 20px;
+    border: #874C41 solid 2px;
+	background-color: #DFBF99;
+	text-decoration: none;
+    color: #7D872D;
+    -webkit-text-stroke: 1px #874C41;
+}
+
 .paginado ul li a {
 	display:block;
 	padding:10px 20px;
@@ -22,9 +37,22 @@
     -webkit-text-stroke: 1px #874C41;
 }
 
+
 .paginado ul li a:hover {
 	background-color: #874C41;
     color: #DFBF99;
+    -webkit-text-stroke: 1px #7D872D
+}
+
+.button:hover {
+	background-color: #874C41;
+    color: #DFBF99;
+    -webkit-text-stroke: 1px #7D872D
+}
+
+.button:disabled{
+	background-color: #DFBF99;
+    color: #874C41;
     -webkit-text-stroke: 1px #7D872D
 }
 

@@ -14,7 +14,8 @@ export const NewRecipes = () => {
         dispatch(getDiets())
     },[dispatch])
     const [validation, setValidation] = useState({
-        data:"",
+        name:"",
+        resumen:"",
         score:"",
     })
     const [recipes, setRecipes] = useState({
@@ -27,7 +28,7 @@ export const NewRecipes = () => {
     })
 
     function handleOnchange(e){
-        setValidation(
+            setValidation(
             Validation({
                 ...recipes,
                 [e.target.name]: e.target.value
@@ -43,19 +44,23 @@ export const NewRecipes = () => {
 
     function handleSubmit(e){
         e.preventDefault()
-        if (recipes.name || recipes.resumen) {
-            dispatch(postRecipe(recipes))
-            setRecipes({
-                name:"",
-                resumen:"",
-                score:"",
-                stepByStep:"",
-                dietId:[]
+        if (validation.name || validation.resumen) {
+            return window.alert("Faltan Datos")
+        }else if 
+            (recipes.name || recipes.resumen) {
+                dispatch(postRecipe(recipes))
+                setRecipes({
+                    name:"",
+                    resumen:"",
+                    score:"",
+                    stepByStep:"",
+                    dietId:[]
             })
-            navigate("/recipes")
+            return window.alert("Usario creado correctamente",navigate("/recipes"));
+            
             
         }
-        return validation.data
+        // return validation.data
     }
 
     function handelCheck(e){
@@ -68,9 +73,13 @@ export const NewRecipes = () => {
     }
 
     return (
-            // <Link to="/recipes">
-            //     <button>Volver</button>
-            // </Link>
+            <div>
+                <div className={style.divButton}>
+                <Link to="/recipes">
+                    <button className={style.button}>←</button>
+                </Link>
+            </div>
+            
         <div className={style.divContainer}>
             <h2 className={style.title}>Nueva Receta</h2>
             <br />
@@ -80,19 +89,21 @@ export const NewRecipes = () => {
                 <br />
                 <input 
                     className={style.input}
+                    style={ {border: validation.name ? "solid 2px #CF8334" : ""}}
                     type="text"
                     name="name"
                     placeholder="Nombre de la receta"
                     value={recipes.name}
                     onChange={handleOnchange}
                 />
-                <p>{validation.data && validation.data}</p>
+                <p className={style.p}>{validation.name && validation.name}</p>
                 <br />
                 <label className={style.titleH3} htmlFor="score">Puntuacion</label>
                 <br />
                 <br />
                 <input 
                     className={style.input}
+                    style={ {border: validation.score ? "solid 2px #CF8334" : ""}}
                     type="number"
                     name="score"
                     value={recipes.score}
@@ -102,7 +113,7 @@ export const NewRecipes = () => {
                     max="100"
                     onChange={handleOnchange}
                 />
-                <p>{validation.score && validation.score}</p>
+                <p className={style.p}>{validation.score && validation.score}</p>
                 <br />
                 <label className={style.titleH3}>Tipos de Dieta</label>
                 <br />
@@ -129,6 +140,23 @@ export const NewRecipes = () => {
                 </div>
                 <br />
                 <br />
+                <label className={style.titleH3} htmlFor="summary">Resumen</label>
+                <br />
+                <br />
+                
+                <textarea 
+                    className={style.input}
+                    style={ {border: validation.resumen ? "solid 2px #CF8334" : ""}}
+                    onChange={handleOnchange}
+                    value={recipes.resumen}
+                    name="resumen" 
+                    cols="30" 
+                    rows="10">
+                    
+                </textarea>
+                <p className={style.p}>{validation.resumen && validation.resumen}</p>
+                <br />
+                <br />
                 <label className={style.titleH3} htmlFor="summary">Paso a Paso</label>
                 <br />
                 <br />
@@ -141,27 +169,13 @@ export const NewRecipes = () => {
                     rows="10"> 
                     
                 </textarea>
-                
                 <br />
-                <br />
-                <label className={style.titleH3} htmlFor="summary">Resumen</label>
-                <br />
-                <br />
-                <textarea 
-                    className={style.input}
-                    onChange={handleOnchange}
-                    value={recipes.resumen}
-                    name="resumen" 
-                    cols="30" 
-                    rows="10">
-                    
-                </textarea>
-                <p>{validation.data && validation.data}</p>
                 <br />
                 <div>
                     <button className={style.button} type="submit">Crear</button>
                 </div>
             </form>
+        </div>
         </div>
     )
 }

@@ -27,6 +27,24 @@ export function Recipes() {
         setCurrentPage(numberPage)
     }
 
+    const nextPaginado = () => {
+        
+        const allRecipes = recipes.length
+        const next = currentPage + 1;
+        const firstNext = next * recipesForPage;
+        console.log(next)
+        setCurrentPage(next);
+        if (firstNext === allRecipes) return;
+    }
+
+    const prevPaginado = () => {
+        console.log("Prev")
+
+        const prev = currentPage - 1
+        setCurrentPage(prev)
+        if (currentPage === 1) return; 
+    }
+
     useEffect(() =>{
         dispatch(getAllRecipes());
     },[dispatch])
@@ -57,9 +75,6 @@ export function Recipes() {
         
         <div className={style.recipes}>
 
-                {/* <Link to="/" style={{ textDecoration: "none" }}>
-                    <h1 className={style.title}>Recetas</h1>
-                </Link> */}
             
 
             <div className={style.divFilters}>
@@ -96,15 +111,18 @@ export function Recipes() {
             </div>
 
             <div>
-
+                
                 {
                     <Paginado
-
+                    current={currentPage}
+                    prevPaginado={prevPaginado}
+                    nextPaginado={nextPaginado}
                     recipes={recipes.length}
                     recipesForPage={recipesForPage}
                     paginado={paginado}
                     />
                 }
+                
                 <Link to='/new-recipes'>
                     <button className={style.button}>Nueva Receta</button>
                 </Link>
@@ -122,9 +140,8 @@ export function Recipes() {
                                 createDb={recipe.createdAt}
                                 />
                             )
-                        }):
-                        <div className="loader"></div>
-                    }
+                        }): <div className="loader"></div>
+                }
                 </div>
 
             </div>
